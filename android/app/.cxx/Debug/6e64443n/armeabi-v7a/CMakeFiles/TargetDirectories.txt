@@ -1,0 +1,2 @@
+C:/Users/HP/StudioProjects/E_Commerce/android/app/.cxx/Debug/6e64443n/armeabi-v7a/CMakeFiles/edit_cache.dir
+C:/Users/HP/StudioProjects/E_Commerce/android/app/.cxx/Debug/6e64443n/armeabi-v7a/CMakeFiles/rebuild_cache.dir
