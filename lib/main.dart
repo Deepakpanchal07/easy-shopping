@@ -25,7 +25,8 @@ void main() async {
   Get.put(CartController());
   FirebaseMessaging.onBackgroundMessage(_firebaseBackgroundHandler);
   GetServerKey getServerKey = GetServerKey();
-  String accessToken = await getServerKey.getServerKeyToken();
+  String accessToken = await getServerKey.getServerKey();
+
   print(accessToken);
   runApp(const MyApp());
 }
