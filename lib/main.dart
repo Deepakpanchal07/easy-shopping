@@ -22,7 +22,8 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   // Register cart controller globally
-  Get.put(CartController());
+  Get.put(CartController()).fetchCartCount();
+
   FirebaseMessaging.onBackgroundMessage(_firebaseBackgroundHandler);
   GetServerKey getServerKey = GetServerKey();
   String accessToken = await getServerKey.getServerKey();
