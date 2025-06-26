@@ -1,5 +1,9 @@
 # Easy Shopping 🛒
 
+![Screenshot 2025-06-26 105556](https://github.com/user-attachments/assets/f7cd44e5-0956-49ac-bca9-c5373a18823c)
+
+
+
 A new Flutter-based eCommerce application.
 
 ## 📱 Overview
