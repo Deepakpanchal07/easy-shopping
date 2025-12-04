@@ -28,7 +28,7 @@ class _CartScreenState extends State<CartScreen> {
     return Scaffold(
       appBar: AppBar(
         title: const Text(
-          'Cart Screen',
+          'Add to Cart',
           style: TextStyle(
               color: AppConstant.appTextColor, fontWeight: FontWeight.bold),
         ),

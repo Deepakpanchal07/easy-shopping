@@ -111,15 +111,15 @@ void placeOrder(
       }
 
       // sent notification:
-      await SendNotificationService.sendNotificationUsingApi(
-          token:
-              "eQkgzTwMSwmjKhBJ7WwOEr:APA91bG0OGlGt3Bxi7Q2XRN5OpIRRkkgGQKKkuFdvm7YliaV8eXlEl1qsSE05kBjGmGSpyMt4U_BNDLwQaD8ZOwdCGLv11wL0x1PnkrOw38ZdfZje0ScxaU",
-          title: "Order Successfully Placed",
-          body: "Notification body",
-          data: {
-            "Screen": "notification",
-          },
-          deviceToken: customerDeviceToken);
+      // await SendNotificationService.sendNotificationUsingApi(
+      //     token:
+      //         "eQkgzTwMSwmjKhBJ7WwOEr:APA91bG0OGlGt3Bxi7Q2XRN5OpIRRkkgGQKKkuFdvm7YliaV8eXlEl1qsSE05kBjGmGSpyMt4U_BNDLwQaD8ZOwdCGLv11wL0x1PnkrOw38ZdfZje0ScxaU",
+      //     title: "Order Successfully Placed",
+      //     body: "Notification body",
+      //     data: {
+      //       "Screen": "notification",
+      //     },
+      //     deviceToken: customerDeviceToken);
 
       print("Order Confirmed");
       Get.snackbar("Order Confirmed", "Thank You For Your Order",

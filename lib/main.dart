@@ -1,5 +1,5 @@
 import 'package:e_commerce/screens/auth-ui/splash-screen.dart';
-import 'package:e_commerce/services/get-service-key.dart';
+import 'package:e_commerce/screens/auth-ui/welcome-screen.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
@@ -25,12 +25,15 @@ void main() async {
   Get.put(CartController()).fetchCartCount();
 
   FirebaseMessaging.onBackgroundMessage(_firebaseBackgroundHandler);
-  GetServerKey getServerKey = GetServerKey();
-  String accessToken = await getServerKey.getServerKey();
+  //  var getServerKey = GetServerKey();
+  // String accessToken = await getServerKey.getServerKey();
 
-  print(accessToken);
+  // print(accessToken);
   runApp(const MyApp());
 }
+
+// GetServerKey() {
+// }
 
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
@@ -43,7 +46,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: SplashScreen(),
+      home: WelcomeScreen(),
       builder: EasyLoading.init(),
     );
   }

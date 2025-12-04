@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:e_commerce/controllers/google-sign-in-controller.dart';
 import 'package:e_commerce/screens/auth-ui/sign-in-screen.dart';
 import 'package:e_commerce/utils/app-constant.dart';
@@ -9,151 +11,206 @@ class WelcomeScreen extends StatelessWidget {
   WelcomeScreen({super.key});
 
   final GoogleSignInController _googleSignInController =
-      Get.put(GoogleSignInController());
+  Get.put(GoogleSignInController());
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        centerTitle: true,
-        backgroundColor: AppConstant.appMainColor,
-        title: const Text(
-          "🎉 Welcome to Tivy!",
-          style: TextStyle(
-              color: AppConstant.appTextColor,
-              fontWeight: FontWeight.bold,
-              fontSize: 22),
-        ),
-      ),
       body: Stack(
         children: [
-          // Background Lottie
-          SizedBox(
-            height: Get.height,
-            width: Get.width,
+          /// 🎯 Gradient Background
+          Container(
+            decoration: const BoxDecoration(
+              gradient: LinearGradient(
+                colors: [
+                  Color(0xff8E0E00),
+                  Color(0xffFF512F),
+                ],
+                begin: Alignment.topLeft,
+                end: Alignment.bottomRight,
+              ),
+            ),
+          ),
+
+          /// 🎉 Confetti Animation
+          Positioned.fill(
             child: Lottie.asset(
-              'assets/images/background.json',
+              'assets/images/Confetti.json',
               fit: BoxFit.cover,
             ),
           ),
 
-          Container(
-            height: Get.height,
-            width: Get.width,
-            color: Colors.black.withOpacity(0.4),
+          /// ✅ Dark Glass Overlay
+          Positioned.fill(
+            child: Container(
+              color: Colors.black.withOpacity(0.35),
+            ),
           ),
-          Column(
-            children: [
-              SizedBox(
-                height: 250,
-                width: 2000,
-                child: Lottie.asset('assets/images/welcomes.json'),
-              ),
 
-              // Heading Text
-              const Text(
-                "Happy Shopping 🎁",
-                style: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white,
-                ),
-              ),
+          /// ✅ Main Content
+          SafeArea(
+            child: Column(
+              children: [
+                const SizedBox(height: 40),
 
-              const SizedBox(height: 10),
+                /// 🛒 Shopping Animation
+                SizedBox(
+                  height: 260,
+                  child:
+                  Lottie.asset('assets/images/shopping cart.json'),
+                ),
 
-              // Sub text
-              const Text(
-                "Get amazing products and deals only on Tivy",
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  fontSize: 18,
-                  fontWeight: FontWeight.bold,
-                  color: Colors.white70,
-                ),
-              ),
+                const SizedBox(height: 15),
 
-              const SizedBox(height: 40),
-              Container(
-                width: 275,
-                height: 55,
-                margin: const EdgeInsets.only(bottom: 15),
-                decoration: BoxDecoration(
-                  color: AppConstant.appSecondaryColor,
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                child: TextButton.icon(
-                  icon: Image.asset(
-                    'assets/images/google.png',
-                    width: 26,
-                    height: 26,
+                /// 🎯 Title
+                const Text(
+                  "Welcome to TIVY",
+                  style: TextStyle(
+                    fontSize: 34,
+                    fontWeight: FontWeight.bold,
+                    color: Colors.white,
+                    letterSpacing: 1.2,
                   ),
-                  label: const Text(
-                    "Sign in with Google",
-                    style: TextStyle(
-                      color: AppConstant.appTextColor,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  onPressed: () {
-                    _googleSignInController.signInWithGoogle();
-                  },
                 ),
-              ),
-              SizedBox(
-                height: 10,
-              ),
-              Container(
-                width: 275,
-                height: 55,
-                margin: const EdgeInsets.only(bottom: 25),
-                decoration: BoxDecoration(
-                  color: AppConstant.appSecondaryColor,
-                  borderRadius: BorderRadius.circular(30.0),
-                ),
-                child: TextButton.icon(
-                  icon: const Icon(
-                    Icons.email,
-                    size: 28.0,
-                    color: AppConstant.appTextColor,
-                  ),
-                  label: const Text(
-                    "Sign in with Email",
-                    style: TextStyle(
-                      color: AppConstant.appTextColor,
-                      fontSize: 18.0,
-                      fontWeight: FontWeight.bold,
-                    ),
-                  ),
-                  onPressed: () {
-                    Get.to(() => const SignInScreen());
-                  },
-                ),
-              ),
-              SizedBox(
-                height: 20,
-              ),
-              // Footer Text
-              const Align(
-                alignment: Alignment.centerRight,
-                child: Padding(
-                  padding: EdgeInsets.only(right: 5.0),
+
+                const SizedBox(height: 10),
+
+                /// ✅ Subtitle
+                const Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 25),
                   child: Text(
-                    "Enjoy your shopping ✌️",
+                    "India’s smartest shopping app for best deals and premium products 🚀",
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
+                      fontSize: 17,
+                      color: Colors.white70,
+                      height: 1.4,
+                    ),
+                  ),
+                ),
+
+                const SizedBox(height: 40),
+
+                /// ✅ Glassmorphic Button Section
+                clipGlassContainer(
+                  child: Column(
+                    children: [
+                      /// ✅ Google Sign In Button
+                      buildButton(
+                        icon: Image.asset(
+                          'assets/images/google.png',
+                          width: 24,
+                        ),
+                        text: "Continue with Google",
+                        onTap: () {
+                          _googleSignInController.signInWithGoogle();
+                        },
+                      ),
+
+                      const SizedBox(height: 15),
+
+                      /// ✅ Email Sign In Button
+                      buildButton(
+                        icon: const Icon(
+                          Icons.email_outlined,
+                          color: Colors.white,
+                        ),
+                        text: "Continue with Email",
+                        onTap: () {
+                          Get.to(() => const SignInScreen());
+                        },
+                      ),
+                    ],
+                  ),
+                ),
+
+                const Spacer(),
+
+                /// ✅ Footer Text
+                const Padding(
+                  padding: EdgeInsets.only(bottom: 25),
+                  child: Text(
+                    "Happy Shopping ✨",
+                    style: TextStyle(
+                      fontSize: 18,
+                      color: Colors.white70,
                       fontWeight: FontWeight.w600,
                     ),
                   ),
                 ),
-              ),
-              const SizedBox(height: 30),
-            ],
+              ],
+            ),
           ),
         ],
+      ),
+    );
+  }
+
+  /// ✅ Glass Container
+  Widget clipGlassContainer({required Widget child}) {
+    return ClipRRect(
+      borderRadius: BorderRadius.circular(30),
+      child: BackdropFilter(
+        filter: ImageFilter.blur(sigmaX: 15, sigmaY: 15),
+        child: Container(
+          width: 320,
+          padding: const EdgeInsets.all(25),
+          decoration: BoxDecoration(
+            color: Colors.white.withOpacity(0.12),
+            borderRadius: BorderRadius.circular(30),
+            border: Border.all(
+              color: Colors.white24,
+              width: 1.2,
+            ),
+          ),
+          child: child,
+        ),
+      ),
+    );
+  }
+
+  /// ✅ Custom Button
+  Widget buildButton(
+      {required Widget icon,
+        required String text,
+        required VoidCallback onTap}) {
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: 55,
+        decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(35),
+          gradient: const LinearGradient(
+            colors: [
+              Color(0xff00c6ff),
+              Color(0xff0072ff),
+            ],
+          ),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black.withOpacity(0.25),
+              blurRadius: 10,
+              offset: const Offset(0, 6),
+            ),
+          ],
+        ),
+        child: Center(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              icon,
+              const SizedBox(width: 12),
+              Text(
+                text,
+                style: const TextStyle(
+                  color: Colors.white,
+                  fontSize: 17,
+                  fontWeight: FontWeight.w600,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }

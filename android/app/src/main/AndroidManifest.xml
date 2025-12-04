@@ -11,7 +11,7 @@
 
 
     <application
-        android:label="e_commerce"
+        android:label="Easy Shopping"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher"
         android:requestLegacyExternalStorage="true"
